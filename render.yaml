@@ -3,8 +3,10 @@ services:
     name: orion-flux-autonomous-os
     runtime: node
     plan: free
+    region: oregon
     buildCommand: cd client && npm install && npm run build && cd ../server && npm install
     startCommand: cd server && node app.js
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
@@ -12,3 +14,11 @@ services:
         value: "false"
       - key: PORT
         value: "5000"
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
