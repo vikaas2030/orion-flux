@@ -1,0 +1,26 @@
+{
+  "clientCode": "vox-calling",
+  "company": "PeoplePerHour Medical Voice Client",
+  "packagedAt": "2026-10-28T15:49:39.840Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-7774.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "cfaf0c7ca36f6d1ae2fcc1b86c956ffbd4a113fc1a39ec641ae3032e9c2245c7"
+    },
+    {
+      "name": "VOX_Medical_Telephony_Voice_Engine.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.3 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\vox-calling"
+}

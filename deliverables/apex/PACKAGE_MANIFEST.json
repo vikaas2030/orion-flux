@@ -1,0 +1,26 @@
+{
+  "clientCode": "apex",
+  "company": "Apex Realty Group",
+  "packagedAt": "2026-10-28T15:49:39.854Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-6076.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "75f680c964b2ef71f26478c53366d047081c67241d51fc47e32ee342d659b506"
+    },
+    {
+      "name": "APEX_Turnkey_Business_Engine.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.1 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\apex"
+}

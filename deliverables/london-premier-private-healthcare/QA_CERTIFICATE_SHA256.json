@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-5410",
+  "client": "London Premier Private Healthcare",
+  "certifiedAt": "2026-11-10T04:27:44.781Z",
+  "contractValue": "$2,600",
+  "advanceSecured": "$1,300",
+  "transactionUtr": "UPI-BANK-864754",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "7cdaa5a90002ea171c932c1d8e938a750a29f6b1a0fe7dde55da3efdeacd4d8e"
+}

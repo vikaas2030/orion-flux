@@ -1,0 +1,26 @@
+{
+  "clientCode": "agency-task",
+  "company": "AGENCY-TASK",
+  "packagedAt": "2026-10-31T14:15:05.325Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-3389.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "b9ca6a4fe43c76374046a02519f7fd697b086158378b6fec6593d8976d3f6df9"
+    },
+    {
+      "name": "AGENCY-TASK_Turnkey_Business_Engine.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.1 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\agency-task"
+}

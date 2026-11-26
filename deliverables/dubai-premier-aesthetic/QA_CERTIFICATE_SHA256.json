@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-9428",
+  "client": "Dubai Premier Aesthetic",
+  "certifiedAt": "2026-11-10T04:27:46.963Z",
+  "contractValue": "$2,400",
+  "advanceSecured": "$1,200",
+  "transactionUtr": "UPI-BANK-866930",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "1223a284be9d0eaced00c6c4ecf9158311ddcd928314b8901a6163680b28db5d"
+}

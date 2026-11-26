@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="100" fill="url(#shine)"/>
+  <!-- O letter stylized -->
+  <circle cx="256" cy="230" r="100" fill="none" stroke="#fff" stroke-width="18"/>
+  <!-- Orbital ring -->
+  <ellipse cx="256" cy="230" rx="140" ry="48" fill="none" stroke="#c4b5fd" stroke-width="6" transform="rotate(-25 256 230)"/>
+  <!-- Dot on orbit -->
+  <circle cx="375" cy="195" r="14" fill="#fbbf24"/>
+  <!-- Text -->
+  <text x="256" y="410" text-anchor="middle" fill="#fff" font-family="sans-serif" font-weight="800" font-size="60">FLUX</text>
+</svg>

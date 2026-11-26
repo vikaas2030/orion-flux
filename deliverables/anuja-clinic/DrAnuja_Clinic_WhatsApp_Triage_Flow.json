@@ -1,0 +1,20 @@
+{
+  "system": "Autonomous WhatsApp Patient Appointment & Triage Bot",
+  "version": "2.4.0",
+  "client": "Dr. Anuja Singh Healthcare Clinic (Bareilly)",
+  "features": [
+    "60-Second Instant Slot Booking via WhatsApp",
+    "Automated 24h & 2h Patient Appointment Reminders",
+    "85% No-Show Reduction Smart Triage Algorithm",
+    "Direct Front-Desk Sync with Google Calendar"
+  ],
+  "appointmentSlots": [
+    "10:00 AM",
+    "11:30 AM",
+    "02:00 PM",
+    "04:30 PM",
+    "06:00 PM"
+  ],
+  "botGreeting": "Namaste! Welcome to Dr. Anuja Singh Healthcare Clinic Bareilly. How may we assist your health consultation today?",
+  "privacyCompliance": "NABH & HIPAA Compliant Data Vault"
+}

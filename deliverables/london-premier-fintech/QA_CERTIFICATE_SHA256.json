@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-4109",
+  "client": "London Premier FinTech",
+  "certifiedAt": "2026-11-10T04:27:46.121Z",
+  "contractValue": "$3,200",
+  "advanceSecured": "$1,600",
+  "transactionUtr": "UPI-BANK-866016",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "e7ef34a7af100ebe582a772c70c46d75355fd5b41bed0796a8e4820a8d625aef"
+}

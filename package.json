@@ -1,0 +1,17 @@
+{
+  "name": "orion-flux",
+  "version": "1.0.0",
+  "description": "ORION FLUX — AI-Powered Super Agent for Business Automation",
+  "private": true,
+  "scripts": {
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "start": "cd server && node app.js",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && node --watch app.js",
+    "package": "node scripts/package.js"
+  },
+  "keywords": ["agent", "crm", "automation", "ai", "business"],
+  "author": "ORION FLUX Team",
+  "license": "MIT"
+}

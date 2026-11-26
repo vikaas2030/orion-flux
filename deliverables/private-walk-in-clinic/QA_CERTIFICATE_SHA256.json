@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-7000",
+  "client": "Private Walk-In Clinic",
+  "certifiedAt": "2026-11-10T04:27:46.251Z",
+  "contractValue": "$2,600",
+  "advanceSecured": "$1,300",
+  "transactionUtr": "UPI-BANK-866231",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "5038944b0ff4b36d2bfe6f2b955286fcdc647f1cbfcfdf2b60f62feac579ba4c"
+}

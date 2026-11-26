@@ -1,0 +1,21 @@
+{
+  "clientCompany": "Contra Milestone Escrow Verified Client (Switzerland (Zurich))",
+  "systemName": "Contra Milestone Escrow Verified Client (Switzerland (Zurich)) 24/7 AI Concierge",
+  "version": "3.0.0-PROD",
+  "deployedAt": "2026-11-10T04:27:44.966Z",
+  "responseLatencyMs": 65,
+  "autoConfirmationSLA": "Instant (< 5 Seconds)",
+  "pricingPolicy": "100% All-Inclusive Net • ₹0 Extra GST (Sec 22 CGST Exempt)",
+  "knowledgeBase": {
+    "businessName": "Contra Milestone Escrow Verified Client (Switzerland (Zurich))",
+    "industry": "Contra Milestone Escrow: Swiss FinTech Multi-Currency Telemetry &...",
+    "contactPhone": "+91 9690973030",
+    "appointmentHours": "Monday - Saturday: 09:00 AM – 08:00 PM",
+    "bookingConfirmationTemplate": "Namaste! Your booking with Contra Milestone Escrow Verified Client (Switzerland (Zurich)) is 100% confirmed. Our team will connect at your scheduled time."
+  },
+  "capabilities": [
+    "Instant Lead Intake & Objection Handling",
+    "Automated Calendar Appointment Scheduling",
+    "Real-Time CRM & Payment Token Webhook Dispatch"
+  ]
+}

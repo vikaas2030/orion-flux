@@ -1,0 +1,13 @@
+node_modules/
+dist/
+client/dist/
+database/*.json
+database/backups/
+.env
+server/.env
+server/bin/*.exe
+*.log
+.DS_Store
+Thumbs.db
+orion-flux-*.zip
+orion-flux-v1.0.0/

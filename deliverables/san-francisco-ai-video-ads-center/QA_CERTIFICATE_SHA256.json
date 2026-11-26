@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-2243",
+  "client": "San Francisco AI Video Ads Center",
+  "certifiedAt": "2026-11-02T13:28:56.405Z",
+  "contractValue": "$450",
+  "advanceSecured": "$200",
+  "transactionUtr": "UPI-BANK-136374",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "6a70186eb0044a3b24d344291c1a9dce4cee9348200eaccaae3b9b1941f81147"
+}

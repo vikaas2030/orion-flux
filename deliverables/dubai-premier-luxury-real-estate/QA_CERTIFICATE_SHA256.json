@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-3697",
+  "client": "Dubai Premier Luxury Real Estate",
+  "certifiedAt": "2026-11-10T04:27:47.144Z",
+  "contractValue": "$2,800",
+  "advanceSecured": "$1,400",
+  "transactionUtr": "UPI-BANK-867063",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "3663e49c2e8c7dfb9225c8a4a25f8fd5a656904e7c6d016e0366fcf7cf660f16"
+}

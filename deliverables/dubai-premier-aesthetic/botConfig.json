@@ -1,0 +1,21 @@
+{
+  "clientCompany": "Dubai Premier Aesthetic",
+  "systemName": "Dubai Premier Aesthetic 24/7 AI Concierge",
+  "version": "3.0.0-PROD",
+  "deployedAt": "2026-11-10T04:27:46.963Z",
+  "responseLatencyMs": 65,
+  "autoConfirmationSLA": "Instant (< 5 Seconds)",
+  "pricingPolicy": "100% All-Inclusive Net • ₹0 Extra GST (Sec 22 CGST Exempt)",
+  "knowledgeBase": {
+    "businessName": "Dubai Premier Aesthetic",
+    "industry": "Dubai Premier Aesthetic — Enterprise AI Automation & 4K Suite",
+    "contactPhone": "+971 4 3333766",
+    "appointmentHours": "Monday - Saturday: 09:00 AM – 08:00 PM",
+    "bookingConfirmationTemplate": "Namaste! Your booking with Dubai Premier Aesthetic is 100% confirmed. Our team will connect at your scheduled time."
+  },
+  "capabilities": [
+    "Instant Lead Intake & Objection Handling",
+    "Automated Calendar Appointment Scheduling",
+    "Real-Time CRM & Payment Token Webhook Dispatch"
+  ]
+}

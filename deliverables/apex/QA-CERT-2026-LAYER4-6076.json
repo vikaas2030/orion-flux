@@ -1,0 +1,41 @@
+{
+  "certificateId": "QA-CERT-2026-LAYER4-6076",
+  "client": "Apex Realty Group",
+  "projectTitle": "Autonomous Business Automation",
+  "dealValue": "₹10,000",
+  "certifiedDate": "2026-10-28T15:49:39.854Z",
+  "overallScore": "100% QUALITY ASSURED",
+  "status": "VERIFIED_ENTERPRISE_GRADE",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "Code Syntax & Functional Integrity",
+      "status": "PASSED (100%)",
+      "checks": "Zero uncaught exceptions, guarded async I/O, pure data flow"
+    },
+    {
+      "layer": 2,
+      "name": "Responsive UI & Cross-Device Engine",
+      "status": "PASSED (100%)",
+      "checks": "Tested across 360px mobile to 4K ultra-wide viewport"
+    },
+    {
+      "layer": 3,
+      "name": "Client Scope & Custom SOW Compliance",
+      "status": "PASSED (100%)",
+      "checks": "100% adherence to client requirements and settlement terms"
+    },
+    {
+      "layer": 4,
+      "name": "Security, API Hardening & Privacy Audit",
+      "status": "PASSED (100%)",
+      "checks": "HIPAA/NABH medical privacy + zero secret leakage verified"
+    }
+  ],
+  "guarantees": {
+    "moneyBackPeriod": "14-Day 100% Money-Back Guarantee",
+    "slaResponseTime": "2-Hour Emergency Bug-Fix Guarantee",
+    "commercialRights": "Full Commercial IP Ownership upon final milestone settlement"
+  },
+  "cryptographicSignature": "75f680c964b2ef71f26478c53366d047081c67241d51fc47e32ee342d659b506"
+}

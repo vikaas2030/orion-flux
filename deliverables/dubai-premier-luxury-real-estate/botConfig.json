@@ -1,0 +1,21 @@
+{
+  "clientCompany": "Dubai Premier Luxury Real Estate",
+  "systemName": "Dubai Premier Luxury Real Estate 24/7 AI Concierge",
+  "version": "3.0.0-PROD",
+  "deployedAt": "2026-11-10T04:27:47.144Z",
+  "responseLatencyMs": 65,
+  "autoConfirmationSLA": "Instant (< 5 Seconds)",
+  "pricingPolicy": "100% All-Inclusive Net • ₹0 Extra GST (Sec 22 CGST Exempt)",
+  "knowledgeBase": {
+    "businessName": "Dubai Premier Luxury Real Estate",
+    "industry": "Dubai Premier Luxury Real Estate — Enterprise AI Automation & 4K Suite",
+    "contactPhone": "+971 4 3519401",
+    "appointmentHours": "Monday - Saturday: 09:00 AM – 08:00 PM",
+    "bookingConfirmationTemplate": "Namaste! Your booking with Dubai Premier Luxury Real Estate is 100% confirmed. Our team will connect at your scheduled time."
+  },
+  "capabilities": [
+    "Instant Lead Intake & Objection Handling",
+    "Automated Calendar Appointment Scheduling",
+    "Real-Time CRM & Payment Token Webhook Dispatch"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-1005",
+  "client": "Freelancer Client — Lead Generation & CRM",
+  "certifiedAt": "2026-11-10T04:27:45.445Z",
+  "contractValue": "$850",
+  "advanceSecured": "$425",
+  "transactionUtr": "UPI-BANK-865422",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "0b1bd3044930bd8c819725e7c0cc11ac4f2087d9dfd3612d55e3c7cfb54e55bb"
+}

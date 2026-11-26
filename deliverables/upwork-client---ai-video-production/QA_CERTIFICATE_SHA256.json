@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-8225",
+  "client": "Upwork Client — AI Video Production",
+  "certifiedAt": "2026-11-10T04:27:47.230Z",
+  "contractValue": "$1,500",
+  "advanceSecured": "$750",
+  "transactionUtr": "UPI-BANK-867195",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "9606b2d59f433bc71f2d6d0a7c6bbbed5fd4a974f40d06ca6da13f1fef2f1624"
+}

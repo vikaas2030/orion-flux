@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-6242",
+  "client": "Fiverr Pro Client — Full-Stack Web Development",
+  "certifiedAt": "2026-11-10T04:27:46.535Z",
+  "contractValue": "$2,500",
+  "advanceSecured": "$1,250",
+  "transactionUtr": "UPI-BANK-866504",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "b25cd10e321825fc5fb80f3713537463d81bb46b6b55bf3066d7a8d02bfad80b"
+}

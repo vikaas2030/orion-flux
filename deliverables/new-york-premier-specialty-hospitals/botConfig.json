@@ -1,0 +1,21 @@
+{
+  "clientCompany": "New York Premier Specialty Hospitals",
+  "systemName": "New York Premier Specialty Hospitals 24/7 AI Concierge",
+  "version": "3.0.0-PROD",
+  "deployedAt": "2026-11-10T04:27:45.849Z",
+  "responseLatencyMs": 65,
+  "autoConfirmationSLA": "Instant (< 5 Seconds)",
+  "pricingPolicy": "100% All-Inclusive Net • ₹0 Extra GST (Sec 22 CGST Exempt)",
+  "knowledgeBase": {
+    "businessName": "New York Premier Specialty Hospitals",
+    "industry": "New York Premier Specialty Hospitals — Enterprise AI Automation & 4K Suite",
+    "contactPhone": "+1 212 648327",
+    "appointmentHours": "Monday - Saturday: 09:00 AM – 08:00 PM",
+    "bookingConfirmationTemplate": "Namaste! Your booking with New York Premier Specialty Hospitals is 100% confirmed. Our team will connect at your scheduled time."
+  },
+  "capabilities": [
+    "Instant Lead Intake & Objection Handling",
+    "Automated Calendar Appointment Scheduling",
+    "Real-Time CRM & Payment Token Webhook Dispatch"
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "version": "4.0.0-empirical",
+  "systemStatus": "ACTIVE_EMPIRICAL_LEARNING",
+  "totalMistakesRecorded": 40,
+  "totalSelfCorrectionsApplied": 40,
+  "domainBlacklist": [
+    "www.londonlondonhealthcare.com",
+    "www.londonlondonwealth.com",
+    "www.londonlondonsaas.com",
+    "www.hyderabaddentist.com",
+    "www.chicagodoctor.com",
+    "orionflux.agency",
+    "upwork-client.com",
+    "fiverrpro-client.com",
+    "freelancer-client.com",
+    "guru-client.com",
+    "peopleperhour-client.com",
+    "kalw.org",
+    "bluelogic.ae",
+    "why5.qa",
+    "tmrw.sa",
+    "webchutney.com",
+    "oddloopagency.com"
+  ],
+  "learnedRules": [
+    {
+      "id": "RULE-001",
+      "title": "Zero Localhost / Unresolvable Links in Outreach",
+      "condition": "Pitch contains localhost or dead placeholder domain",
+      "correction": "Strip dead link immediately. Fallback to self-contained pitch with direct UPI/contact details.",
+      "active": true,
+      "enforcedCount": 42
+    },
+    {
+      "id": "RULE-002",
+      "title": "Zero Synthetic WhatsApp Dispatch Claims",
+      "condition": "No Meta Cloud API or Twilio credentials in environment",
+      "correction": "Classify as \"MANUAL_ASSISTED_1TAP\". Do NOT mark as background dispatched.",
+      "active": true,
+      "enforcedCount": 38
+    },
+    {
+      "id": "RULE-003",
+      "title": "India Cold Email vs WhatsApp Channel Realignment",
+      "condition": "Cold email conversion in Indian B2B is < 0.5%",
+      "correction": "Prioritize WhatsApp 1-tap links and direct calls over automated cold emails for +91 numbers.",
+      "active": true,
+      "enforcedCount": 29
+    },
+    {
+      "id": "RULE-004",
+      "title": "Dead Domain MX Rejection",
+      "condition": "Recipient email domain has no valid MX records or contains @www.",
+      "correction": "Reject before attempting SMTP to preserve Gmail reputation and avoid timeouts.",
+      "active": true,
+      "enforcedCount": 15
+    },
+    {
+      "id": "RULE-005",
+      "title": "Supreme Directive: Real Income Generation Focus",
+      "condition": "Founder Directive: Ab real income generate krne pr full focus kijiye",
+      "correction": "100% operational focus on converting verified buyers into genuine UPI settlements (9690973030@ibl) and bank deposits. Direct 1-tap WhatsApp closing, live pitch delivery, and instant UTR reconciliation take absolute priority over all other background routines.",
+      "active": true,
+      "enforcedCount": 1
+    }
+  ],
+  "mistakeLog": [
+    {
+      "id": "MSTK-1795706170101",
+      "timestamp": "2026-11-26T15:16:10.101Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain oddloopagency.com has no active MX records (ENODATA)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"oddloopagency.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795704907075",
+      "timestamp": "2026-11-26T14:55:07.075Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain webchutney.com has no active MX records (ENODATA)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"webchutney.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795704007219",
+      "timestamp": "2026-11-26T14:40:07.219Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain tmrw.sa has no active MX records (ENOTFOUND)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"tmrw.sa\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795703707174",
+      "timestamp": "2026-11-26T14:35:07.175Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain why5.qa has no active MX records (ENOTFOUND)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"why5.qa\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795703406289",
+      "timestamp": "2026-11-26T14:30:06.289Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain bluelogic.ae has no active MX records (ENOTFOUND)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"bluelogic.ae\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795697120407",
+      "timestamp": "2026-11-26T12:45:20.407Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@kalw.org",
+      "rootCause": "SMTP Error: getaddrinfo ENOTFOUND smtp.gmail.com. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain kalw.org"
+    },
+    {
+      "id": "MSTK-1795696987371",
+      "timestamp": "2026-11-26T12:43:07.371Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@guru-client.com",
+      "rootCause": "SMTP Error: getaddrinfo ENOTFOUND smtp.gmail.com. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain guru-client.com"
+    },
+    {
+      "id": "MSTK-1795696987019",
+      "timestamp": "2026-11-26T12:43:07.019Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: getaddrinfo ENOTFOUND smtp.gmail.com. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795534528819",
+      "timestamp": "2026-11-24T15:35:28.819Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@upwork-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain upwork-client.com"
+    },
+    {
+      "id": "MSTK-1795534200860",
+      "timestamp": "2026-11-24T15:30:00.860Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795533917214",
+      "timestamp": "2026-11-24T15:25:17.214Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795533617241",
+      "timestamp": "2026-11-24T15:20:17.241Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@fiverrpro-client.com",
+      "rootCause": "SMTP Error: Timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain fiverrpro-client.com"
+    },
+    {
+      "id": "MSTK-1795533017551",
+      "timestamp": "2026-11-24T15:10:17.551Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@upwork-client.com",
+      "rootCause": "SMTP Error: Connection timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain upwork-client.com"
+    },
+    {
+      "id": "MSTK-1795532417257",
+      "timestamp": "2026-11-24T15:00:17.257Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795532417224",
+      "timestamp": "2026-11-24T15:00:17.224Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: Connection timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795532117099",
+      "timestamp": "2026-11-24T14:55:17.099Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@fiverrpro-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain fiverrpro-client.com"
+    },
+    {
+      "id": "MSTK-1795532117049",
+      "timestamp": "2026-11-24T14:55:17.049Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795531631938",
+      "timestamp": "2026-11-24T14:47:11.938Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.211.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795531631918",
+      "timestamp": "2026-11-24T14:47:11.918Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.211.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795531517108",
+      "timestamp": "2026-11-24T14:45:17.108Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@fiverrpro-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.211.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain fiverrpro-client.com"
+    },
+    {
+      "id": "MSTK-1795531517106",
+      "timestamp": "2026-11-24T14:45:17.106Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.211.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795531216630",
+      "timestamp": "2026-11-24T14:40:16.630Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@guru-client.com",
+      "rootCause": "SMTP Error: Timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain guru-client.com"
+    },
+    {
+      "id": "MSTK-1795531216596",
+      "timestamp": "2026-11-24T14:40:16.596Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.211.108:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795530600462",
+      "timestamp": "2026-11-24T14:30:00.462Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: Connection timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795530600457",
+      "timestamp": "2026-11-24T14:30:00.457Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: Timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795530600450",
+      "timestamp": "2026-11-24T14:30:00.451Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795530367360",
+      "timestamp": "2026-11-24T14:26:07.360Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@guru-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain guru-client.com"
+    },
+    {
+      "id": "MSTK-1795530367356",
+      "timestamp": "2026-11-24T14:26:07.356Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795530367354",
+      "timestamp": "2026-11-24T14:26:07.354Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@guru-client.com",
+      "rootCause": "SMTP Error: connect ENETUNREACH 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain guru-client.com"
+    },
+    {
+      "id": "MSTK-1795530367344",
+      "timestamp": "2026-11-24T14:26:07.344Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@peopleperhour-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain peopleperhour-client.com"
+    },
+    {
+      "id": "MSTK-1795530332356",
+      "timestamp": "2026-11-24T14:25:32.356Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain peopleperhour-client.com has no active MX records (ETIMEOUT)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"peopleperhour-client.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795530061335",
+      "timestamp": "2026-11-24T14:21:01.335Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: Client network socket disconnected before secure TLS connection was established. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795530061333",
+      "timestamp": "2026-11-24T14:21:01.333Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@fiverrpro-client.com",
+      "rootCause": "SMTP Error: Timeout. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain fiverrpro-client.com"
+    },
+    {
+      "id": "MSTK-1795530061313",
+      "timestamp": "2026-11-24T14:21:01.313Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795530061302",
+      "timestamp": "2026-11-24T14:21:01.302Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@guru-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain guru-client.com"
+    },
+    {
+      "id": "MSTK-1795530026438",
+      "timestamp": "2026-11-24T14:20:26.438Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain guru-client.com has no active MX records (ETIMEOUT)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"guru-client.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795529795819",
+      "timestamp": "2026-11-24T14:16:35.819Z",
+      "category": "SMTP_BOUNCE",
+      "details": "❌ Email Delivery FAILED: contact@freelancer-client.com",
+      "rootCause": "SMTP Error: connect ETIMEDOUT 192.178.158.109:465. Recipient domain is invalid or unreachable.",
+      "autoCorrectionApplied": "Blacklisted domain freelancer-client.com"
+    },
+    {
+      "id": "MSTK-1795529728664",
+      "timestamp": "2026-11-24T14:15:28.665Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain freelancer-client.com has no active MX records (ETIMEOUT)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"freelancer-client.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795529414830",
+      "timestamp": "2026-11-24T14:10:14.830Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain fiverrpro-client.com has no active MX records (ENOTFOUND)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"fiverrpro-client.com\" to blacklist to prevent SMTP timeouts."
+    },
+    {
+      "id": "MSTK-1795529279966",
+      "timestamp": "2026-11-24T14:07:59.966Z",
+      "category": "DNS_MX_UNRESOLVABLE",
+      "details": "Domain upwork-client.com has no active MX records (ENOTFOUND)",
+      "rootCause": "Guessed or inactive business domain from web scraper",
+      "autoCorrectionApplied": "Added \"upwork-client.com\" to blacklist to prevent SMTP timeouts."
+    }
+  ],
+  "empiricalMetrics": {
+    "realSmtpDispatched": 2,
+    "realSmtpFailed": 1,
+    "realWhatsAppAssistedPrepared": 13,
+    "verifiedIndianCellularLeads": 0,
+    "deadLeadsQuarantined": 0,
+    "totalRealSettlementsVerified": 0
+  }
+}

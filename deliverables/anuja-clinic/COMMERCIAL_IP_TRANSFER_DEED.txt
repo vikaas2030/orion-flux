@@ -1,0 +1,22 @@
+═════════════════════════════════════════════════════════════════════
+          OFFICIAL COMMERCIAL IP OWNERSHIP & COPYRIGHT DEED
+═════════════════════════════════════════════════════════════════════
+
+PROJECT NAME : Patient Appointment & WhatsApp Intake Assistant
+CLIENT       : Dr Anuja Singh Healthcare Clinic
+AGENCY       : ORION FLUX AUTONOMOUS TECH AGENCY
+CERTIFICATE  : QA-CERT-2026-LAYER4-1971
+DATE         : 10/28/2026
+INTEGRITY    : SHA-256 [c7c1a9201c6c069f2a0c24ea3f271816...]
+
+LEGAL TERMS OF TRANSFER:
+1. Upon settlement of final milestone (₹9,000), 100% full commercial
+   intellectual property (IP), source code, designs, and media rights
+   are irrevocably assigned and transferred to Dr Anuja Singh Healthcare Clinic.
+2. No ongoing licensing or royalty fees will be charged by ORION FLUX.
+3. The deliverable is backed by a 14-Day 100% Money-Back Guarantee
+   and a 2-Hour Emergency Revision SLA.
+
+Signed & Cryptographically Sealed,
+ORION FLUX Autonomous Quality Assurance Board
+═════════════════════════════════════════════════════════════════════

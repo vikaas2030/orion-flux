@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-6670",
+  "client": "Upwork Direct Contract Verified Client (United States (California))",
+  "certifiedAt": "2026-11-10T04:27:46.661Z",
+  "contractValue": "$3,200",
+  "advanceSecured": "$1,600",
+  "transactionUtr": "UPI-BANK-866628",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "f3be3b3c0f5cd800af7b51f9571a066f61d97570c6a51b82eab86a0a939d2a63"
+}

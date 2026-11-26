@@ -1,0 +1,26 @@
+{
+  "clientCode": "dubai-software",
+  "company": "Dubai Software",
+  "packagedAt": "2026-10-28T15:49:39.833Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-7915.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "c466fe4eaccc0b30b981800fb5ecf47039461f5cad2b38218a47cb626f19e2c7"
+    },
+    {
+      "name": "Dubai_SaaS_High_Retention_Video_Funnel.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.3 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\dubai-software"
+}

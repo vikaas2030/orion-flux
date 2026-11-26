@@ -1,0 +1,31 @@
+{
+  "certId": "QA-CERT-2026-LAYER4-2519",
+  "client": "Guru Client — Full-Stack Web Development",
+  "certifiedAt": "2026-11-10T04:27:45.137Z",
+  "contractValue": "$3,000",
+  "advanceSecured": "$1,500",
+  "transactionUtr": "UPI-BANK-865114",
+  "layers": [
+    {
+      "layer": 1,
+      "name": "SLA Contract & IP Transfer Verification",
+      "status": "PASSED (100%)"
+    },
+    {
+      "layer": 2,
+      "name": "Security & Reverse-Charge Tax Compliance Audit",
+      "status": "PASSED (100% Tax Exempt CGST Sec 22)"
+    },
+    {
+      "layer": 3,
+      "name": "24/7 AI Latency & Resilience Stress Test",
+      "status": "PASSED (< 80ms Latency)"
+    },
+    {
+      "layer": 4,
+      "name": "Turnkey Production Artifact Disk Integrity",
+      "status": "PASSED (SHA-256 Verified)"
+    }
+  ],
+  "cryptographicSha256": "85b1e661c8a5b268f35b0825272f4041e0811aabb198cb991e0f6a4a3b4bbe40"
+}

@@ -1,0 +1,21 @@
+{
+  "clientCompany": "San Francisco AI Video Ads Center",
+  "systemName": "San Francisco AI Video Ads Center 24/7 AI Concierge",
+  "version": "3.0.0-PROD",
+  "deployedAt": "2026-11-02T13:28:56.405Z",
+  "responseLatencyMs": 65,
+  "autoConfirmationSLA": "Instant (< 5 Seconds)",
+  "pricingPolicy": "100% All-Inclusive Net • ₹0 Extra GST (Sec 22 CGST Exempt)",
+  "knowledgeBase": {
+    "businessName": "San Francisco AI Video Ads Center",
+    "industry": "Instant AI Client Intake & 1080p Video Retainer",
+    "contactPhone": "+1 4155554646",
+    "appointmentHours": "Monday - Saturday: 09:00 AM – 08:00 PM",
+    "bookingConfirmationTemplate": "Namaste! Your booking with San Francisco AI Video Ads Center is 100% confirmed. Our team will connect at your scheduled time."
+  },
+  "capabilities": [
+    "Instant Lead Intake & Objection Handling",
+    "Automated Calendar Appointment Scheduling",
+    "Real-Time CRM & Payment Token Webhook Dispatch"
+  ]
+}

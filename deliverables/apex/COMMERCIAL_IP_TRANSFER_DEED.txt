@@ -1,0 +1,22 @@
+═════════════════════════════════════════════════════════════════════
+          OFFICIAL COMMERCIAL IP OWNERSHIP & COPYRIGHT DEED
+═════════════════════════════════════════════════════════════════════
+
+PROJECT NAME : Autonomous Business Automation
+CLIENT       : Apex Realty Group
+AGENCY       : ORION FLUX AUTONOMOUS TECH AGENCY
+CERTIFICATE  : QA-CERT-2026-LAYER4-6076
+DATE         : 10/28/2026
+INTEGRITY    : SHA-256 [75f680c964b2ef71f26478c53366d047...]
+
+LEGAL TERMS OF TRANSFER:
+1. Upon settlement of final milestone (₹10,000), 100% full commercial
+   intellectual property (IP), source code, designs, and media rights
+   are irrevocably assigned and transferred to Apex Realty Group.
+2. No ongoing licensing or royalty fees will be charged by ORION FLUX.
+3. The deliverable is backed by a 14-Day 100% Money-Back Guarantee
+   and a 2-Hour Emergency Revision SLA.
+
+Signed & Cryptographically Sealed,
+ORION FLUX Autonomous Quality Assurance Board
+═════════════════════════════════════════════════════════════════════

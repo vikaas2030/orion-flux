@@ -1,0 +1,26 @@
+{
+  "clientCode": "contra-reels",
+  "company": "Contra Client - Luxury Real Estate",
+  "packagedAt": "2026-10-28T15:49:39.812Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-1227.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "a9182927e4ec6b61797cd6d02e64783e31f5aacf568b497039c836e1b6fde078"
+    },
+    {
+      "name": "CineFlow_15_Villa_Reels_Production_Deck.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.5 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.5 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\contra-reels"
+}

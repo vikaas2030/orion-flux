@@ -1,0 +1,26 @@
+{
+  "clientCode": "smilecraft",
+  "company": "SmileCraft Dental & Aesthetics",
+  "packagedAt": "2026-10-28T15:49:39.870Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-3527.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "aa2fedd7bebdddbe4d777bc12323b46d74ce8c679c30815419a8a574f8a9c350"
+    },
+    {
+      "name": "SMILECRAFT_Turnkey_Business_Engine.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.2 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\smilecraft"
+}

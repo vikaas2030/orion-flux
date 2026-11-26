@@ -1,0 +1,26 @@
+{
+  "clientCode": "anuja-clinic",
+  "company": "Dr Anuja Singh Healthcare Clinic",
+  "packagedAt": "2026-10-28T15:49:39.792Z",
+  "totalFiles": 3,
+  "files": [
+    {
+      "name": "QA-CERT-2026-LAYER4-1971.json",
+      "type": "Cryptographic QA Certificate",
+      "size": "1.4 KB",
+      "hash": "c7c1a9201c6c069f2a0c24ea3f271816dcc42c6edad490879e0a4847c8231f17"
+    },
+    {
+      "name": "DrAnuja_Clinic_WhatsApp_Triage_Flow.json",
+      "type": "Technical Deliverable Package",
+      "size": "0.7 KB"
+    },
+    {
+      "name": "COMMERCIAL_IP_TRANSFER_DEED.txt",
+      "type": "Legal Copyright Transfer Deed",
+      "size": "1.4 KB"
+    }
+  ],
+  "downloadReady": true,
+  "localDirectory": "D:\\ANTIGRAVITY VK\\orion-flux\\deliverables\\anuja-clinic"
+}

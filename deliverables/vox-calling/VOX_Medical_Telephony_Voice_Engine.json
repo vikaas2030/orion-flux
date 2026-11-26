@@ -1,0 +1,7 @@
+{
+  "system": "VOX Ultra-Low Latency Telephony AI Voice Assistant",
+  "client": "PeoplePerHour Medical Client",
+  "latencyTarget": "<500ms Audio Roundtrip",
+  "telephonyProtocol": "SIP Trunking / WebRTC / Twilio Compatible",
+  "emergencyTriageLogic": "Immediate front-desk escalation on chest pain/high fever flags"
+}
