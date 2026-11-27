@@ -5,7 +5,9 @@ import DigitalAgreementSealModal from '../components/Portal/DigitalAgreementSeal
 export default function QuickCheckoutPage() {
   const { slug } = useParams();
   const [dealData, setDealData] = useState(null);
-  const [selectedTier, setSelectedTier] = useState('advance'); // 'advance' | 'pilot'
+  const [selectedTier, setSelectedTier] = useState('pilot'); // Default to zero-risk pilot
+  const [selectedPaymentRail, setSelectedPaymentRail] = useState(null); // 'paypal' | 'upi' | null
+  const [copiedPaypal, setCopiedPaypal] = useState(false); // 'advance' | 'pilot'
   const [copiedVpa, setCopiedVpa] = useState(false);
   const [utrInput, setUtrInput] = useState('');
   const [submittingUtr, setSubmittingUtr] = useState(false);
@@ -15,44 +17,51 @@ export default function QuickCheckoutPage() {
   const [ratifiedData, setRatifiedData] = useState(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: 59, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const sendRadarBeacon = (actionName, currentAmount) => {
-    try {
-      fetch('/api/hot-intent/ping', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          slug: slug || 'direct-checkout',
-          clientName: dealData?.company || 'Enterprise Prospect',
-          action: actionName,
-          amount: currentAmount || (selectedTier === 'pilot' ? 2500 : 12500),
-          page: window.location.pathname
-        })
-      }).catch(() => {});
-    } catch (_) {}
-  };
-
-  useEffect(() => {
     const targetSlug = slug || 'apex';
-    // First try domestic closer deals
-    fetch('/api/domestic-closer/deals')
+    // 1. First query public client portal for dynamic lead quotes and international projects
+    fetch(`/api/public-access/client-portal/${targetSlug}`)
       .then(res => res.json())
-      .then(res => {
-        if (res.success && res.deals) {
-          const match = res.deals.find(d => d.slug === targetSlug || d.id === targetSlug) || res.deals[0];
-          setDealData(match);
-          sendRadarBeacon('PAGE_VIEW', match.advance50INR);
+      .then(data => {
+        if (data.success && data.portal) {
+          const p = data.portal;
+          const isUSD = p.currency === 'USD' || (p.invoice?.totalUSD > 0);
+          setDealData({
+            company: p.company || 'Enterprise Partner',
+            scope: p.projectName || 'Autonomous AI Business Systems Deployment',
+            currency: p.currency || (isUSD ? 'USD' : 'INR'),
+            isUSD: isUSD,
+            totalValue: isUSD ? (p.invoice?.totalUSD || 850) : (p.invoice?.totalAmount || 25000),
+            advance50: isUSD ? (p.invoice?.advance50USD || Math.round((p.invoice?.totalUSD || 850) * 0.5)) : (p.invoice?.advance50 || 12500),
+            pilotToken: isUSD ? (p.invoice?.testTokenUSD || 49) : (p.invoice?.testToken || 999),
+            slug: targetSlug,
+            invoiceNumber: p.invoice?.number || `INV-${targetSlug.toUpperCase()}`
+          });
+          sendRadarBeacon('PAGE_VIEW', isUSD ? 49 : 12500);
+          return;
         }
+
+        // 2. Fallback to domestic-closer deals
+        return fetch('/api/domestic-closer/deals')
+          .then(res => res.json())
+          .then(res => {
+            if (res.success && res.deals) {
+              const match = res.deals.find(d => d.slug === targetSlug || d.id === targetSlug) || res.deals[0];
+              if (match) {
+                setDealData({
+                  company: match.company,
+                  scope: match.scope,
+                  currency: 'INR',
+                  isUSD: false,
+                  totalValue: match.totalValueINR,
+                  advance50: match.advance50INR,
+                  pilotToken: match.pilotTokenINR || 999,
+                  slug: match.slug || targetSlug,
+                  invoiceNumber: `INV-${(match.slug || 'DEAL').toUpperCase()}`
+                });
+                sendRadarBeacon('PAGE_VIEW', match.advance50INR);
+              }
+            }
+          });
       })
       .catch(() => {});
   }, [slug]);
@@ -60,21 +69,31 @@ export default function QuickCheckoutPage() {
   const fallbackDeal = {
     company: 'Enterprise Partner',
     scope: 'Autonomous AI Business Systems Deployment',
-    totalValueINR: 25000,
-    advance50INR: 12500,
-    pilotTokenINR: 2500,
+    currency: 'INR',
+    isUSD: false,
+    totalValue: 25000,
+    advance50: 12500,
+    pilotToken: 999,
     slug: 'partner'
   };
 
   const deal = dealData || fallbackDeal;
+  const isUSD = deal.isUSD || deal.currency === 'USD';
   const isPilot = selectedTier === 'pilot';
-  const activeAmount = isPilot ? deal.pilotTokenINR : deal.advance50INR;
-  const activeAmountFormatted = `₹${activeAmount?.toLocaleString('en-IN')} INR`;
+  const activeAmount = isPilot ? (deal.pilotToken || (isUSD ? 49 : 999)) : (deal.advance50 || (isUSD ? 425 : 12500));
+  const activeAmountFormatted = isUSD ? `${activeAmount?.toLocaleString()} USD` : `₹${activeAmount?.toLocaleString('en-IN')} INR`;
 
+  // Dual Rail: UPI & PayPal
+  const effectiveRail = selectedPaymentRail || (isUSD ? 'paypal' : 'upi');
   const cleanNote = encodeURIComponent(`${isPilot ? 'Pilot Token' : '50% Advance'} - ${deal.company}`.slice(0, 45));
   const payeeName = encodeURIComponent('Vikas Singh');
-  const upiUri = `upi://pay?pa=9690973030@ibl&pn=${payeeName}&am=${activeAmount}&cu=INR&tn=${cleanNote}`;
+  const upiAmount = isUSD ? Math.round(activeAmount * 86) : activeAmount;
+  const upiUri = `upi://pay?pa=9690973030@ibl&pn=${payeeName}&am=${upiAmount}&cu=INR&tn=${cleanNote}`;
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(upiUri)}`;
+
+  // PayPal URL
+  const paypalCheckoutUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent('payments@orionflux.agency')}&amount=${isUSD ? activeAmount : Math.round(activeAmount / 86)}&currency_code=USD&item_name=${encodeURIComponent('ORION FLUX Checkout - ' + deal.company)}`;
+  const paypalMeUrl = `https://paypal.me/orionflux/${isUSD ? activeAmount : Math.round(activeAmount / 86)}USD`;
 
   const handleSubmitUtr = (e) => {
     e.preventDefault();

@@ -29,8 +29,11 @@ export default function ClientPortal() {
   const [showBondModal, setShowBondModal] = useState(false);
   const [bondData, setBondData] = useState(null);
   const [copiedBond, setCopiedBond] = useState(false);
+  const [copiedPaypal, setCopiedPaypal] = useState(false);
+  const [copiedUpi, setCopiedUpi] = useState(false);
+  const [selectedPaymentRail, setSelectedPaymentRail] = useState(null); // 'paypal' | 'upi' | null
   const [activeCurrency, setActiveCurrency] = useState('INR');
-  const [settlementTier, setSettlementTier] = useState('advance'); // 'advance' | 'pilot'
+  const [settlementTier, setSettlementTier] = useState('pilot'); // 'advance' | 'pilot'
   const [activeDocType, setActiveDocType] = useState(null); // 'bond' | 'proforma' | 'sow' | null
   const [showReceiptModal, setShowReceiptModal] = useState(false);
   const [receiptData, setReceiptData] = useState(null);
@@ -44,7 +47,12 @@ export default function ClientPortal() {
     fetch(`/api/public-access/client-portal/${codeToFetch || clientCode}`)
       .then(res => res.json())
       .then(data => {
-        if (data.portal) setPortalData(data.portal);
+        if (data.portal) {
+          setPortalData(data.portal);
+          if (data.portal.currency) {
+            setActiveCurrency(data.portal.currency);
+          }
+        }
       })
       .catch(() => {});
   };
@@ -202,15 +210,21 @@ export default function ClientPortal() {
     );
   }
 
-  const isUSD = portalData.currency === 'USD' || activeCurrency === 'USD';
+    const isUSD = portalData.currency === 'USD' || activeCurrency === 'USD';
   const pilotAmount = isUSD ? 49 : 999;
   const pilotAmountFormatted = isUSD ? '$49 USD' : '₹999 INR';
-  const activeAmountFormatted = settlementTier === 'pilot' ? pilotAmountFormatted : (portalData.invoice?.advanceFormatted || '₹22,500');
+  const activeAmountFormatted = settlementTier === 'pilot' ? pilotAmountFormatted : (portalData.invoice?.advanceFormatted || (isUSD ? '$425 USD' : '₹22,500'));
 
   const upiAmountINR = isUSD ? Math.round(pilotAmount * 86) : pilotAmount;
   const pilotUpiString = `upi://pay?pa=9690973030@ibl&pn=Vikas%20Singh&am=${upiAmountINR}&cu=INR&tn=ORION-PILOT-${portalData.invoice?.number || clientCode.toUpperCase()}`;
   const effectiveUpiString = settlementTier === 'pilot' ? pilotUpiString : (portalData.invoice?.upiString || 'upi://pay?pa=9690973030@ibl&pn=Vikas%20Singh');
   const qrInvoiceUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(effectiveUpiString)}`;
+
+  // PayPal Global Settlement Links
+  const paypalAmountUSD = settlementTier === 'pilot' ? 49 : (portalData.invoice?.advance50USD || portalData.invoice?.advance50 || (portalData.invoice?.totalUSD ? Math.round(portalData.invoice.totalUSD * 0.5) : 49));
+  const paypalCheckoutUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent('payments@orionflux.agency')}&amount=${paypalAmountUSD}&currency_code=USD&item_name=${encodeURIComponent('ORION FLUX Autonomous Deployment Sprint - ' + (portalData.company || clientCode))}`;
+  const paypalMeUrl = `https://paypal.me/orionflux/${paypalAmountUSD}USD`;
+  const effectivePaymentRail = selectedPaymentRail || (isUSD ? 'paypal' : 'upi');
 
   return (
     <div className="client-portal-page animate-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px 16px' }}>
@@ -572,18 +586,20 @@ export default function ClientPortal() {
 
               <div className="flex gap-8 items-center flex-wrap">
                 <a
-                  href={`upi://pay?pa=9690973030@ibl&pn=Vikas%20Singh%20Sprint%20Token&am=999&cu=INR`}
+                  href={isUSD ? paypalCheckoutUrl : `upi://pay?pa=9690973030@ibl&pn=Vikas%20Singh%20Sprint%20Token&am=999&cu=INR`}
+                  target={isUSD ? "_blank" : undefined}
+                  rel={isUSD ? "noopener noreferrer" : undefined}
                   className="btn btn-primary"
                   style={{
-                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    background: isUSD ? 'linear-gradient(135deg, #ffc439 0%, #f69c14 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                     color: '#000',
                     fontWeight: 'bold',
                     fontSize: '12px',
                     padding: '8px 16px',
-                    boxShadow: '0 4px 14px rgba(16, 185, 129, 0.4)'
+                    boxShadow: isUSD ? '0 4px 14px rgba(245, 158, 11, 0.4)' : '0 4px 14px rgba(16, 185, 129, 0.4)'
                   }}
                 >
-                  ⚡ Lock Sprint: Pay ₹999 Token (1-Click UPI)
+                  {isUSD ? '💳 Lock Sprint: Pay $49 via PayPal / Card' : '🔒 Lock Sprint: Pay ₹999 Token (1-Click UPI)'}
                 </a>
                 <button
                   onClick={handleOpenBond}
@@ -935,18 +951,66 @@ export default function ClientPortal() {
           </div>
         </div>
 
-        {/* Direct Bank UPI & Micro-Token Settlement Section */}
-        <div id="payment-section" className="glass-card" style={{ padding: '22px', background: '#070712', border: '1px solid var(--border-color)', borderTop: '3px solid #10b981' }}>
-          <div className="flex justify-between items-center mb-12">
-            <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: '#f1f5f9' }}>
-              💳 Secure Instant Bank Settlement Rail
+        {/* Direct Bank UPI & Global PayPal Micro-Token Settlement Section */}
+        <div id="payment-section" className="glass-card" style={{ padding: '24px', background: '#070712', border: '1px solid var(--border-color)', borderTop: '3px solid #10b981' }}>
+          <div className="flex justify-between items-center mb-12 flex-wrap gap-8">
+            <h3 style={{ fontSize: '17px', fontWeight: 'bold', color: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span>🛡️</span> Instant Settlement Rail (Escrow Protected)
             </h3>
-            <span className="badge badge-won" style={{ background: '#10b981', color: '#000', fontSize: '10px' }}>
+            <span className="badge badge-won" style={{ background: '#10b981', color: '#000', fontSize: '10px', fontWeight: 'bold' }}>
               0% EXTRA FEES • 100% ESCROW ASSURED
             </span>
           </div>
 
-          {/* Settlement Option Switcher */}
+          {/* Payment Method Selector: Global PayPal / Card vs Domestic UPI */}
+          <div style={{ display: 'flex', gap: '8px', background: 'rgba(255,255,255,0.03)', padding: '5px', borderRadius: '10px', marginBottom: '16px' }}>
+            <button
+              type="button"
+              onClick={() => setSelectedPaymentRail('paypal')}
+              style={{
+                flex: 1,
+                padding: '9px 12px',
+                borderRadius: '8px',
+                border: effectivePaymentRail === 'paypal' ? '1.5px solid #ffc439' : '1px solid transparent',
+                background: effectivePaymentRail === 'paypal' ? 'rgba(255, 196, 57, 0.15)' : 'transparent',
+                color: effectivePaymentRail === 'paypal' ? '#ffc439' : '#94a3b8',
+                fontWeight: 'bold',
+                fontSize: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                transition: 'all 0.2s'
+              }}
+            >
+              <span>💳</span> Global PayPal & Cards (Worldwide)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedPaymentRail('upi')}
+              style={{
+                flex: 1,
+                padding: '9px 12px',
+                borderRadius: '8px',
+                border: effectivePaymentRail === 'upi' ? '1.5px solid #10b981' : '1px solid transparent',
+                background: effectivePaymentRail === 'upi' ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
+                color: effectivePaymentRail === 'upi' ? '#34d399' : '#94a3b8',
+                fontWeight: 'bold',
+                fontSize: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                transition: 'all 0.2s'
+              }}
+            >
+              <span>📱</span> Instant Bank UPI (India)
+            </button>
+          </div>
+
+          {/* Settlement Tier Switcher: Advance vs Pilot */}
           <div style={{ display: 'flex', gap: '8px', background: 'rgba(255,255,255,0.04)', padding: '4px', borderRadius: '8px', marginBottom: '16px' }}>
             <button
               type="button"
@@ -964,7 +1028,7 @@ export default function ClientPortal() {
                 transition: 'all 0.2s'
               }}
             >
-              🥇 50% Milestone Advance ({portalData.invoice?.advanceFormatted})
+              💼 50% Milestone Advance ({portalData.invoice?.advanceFormatted || (isUSD ? '$425 USD' : '₹12,500')})
             </button>
             <button
               type="button"
@@ -982,58 +1046,163 @@ export default function ClientPortal() {
                 transition: 'all 0.2s'
               }}
             >
-              🛡️ Zero-Risk Pilot ({pilotAmountFormatted})
+              ⚡ Zero-Risk Pilot Token ({pilotAmountFormatted})
             </button>
           </div>
 
-          <div className="flex gap-16 items-center mb-16 flex-wrap">
-            <div style={{ background: '#fff', padding: '8px', borderRadius: '10px', boxShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>
-              <img src={qrInvoiceUrl} alt="UPI QR" style={{ width: '130px', height: '130px', display: 'block' }} />
+          {/* Global PayPal & Card View */}
+          {effectivePaymentRail === 'paypal' ? (
+            <div style={{ background: 'rgba(255, 196, 57, 0.04)', border: '1.5px solid rgba(255, 196, 57, 0.25)', borderRadius: '12px', padding: '18px', marginBottom: '16px' }}>
+              <div className="flex justify-between items-start mb-12 flex-wrap gap-8">
+                <div>
+                  <div style={{ fontSize: '11px', color: '#ffc439', textTransform: 'uppercase', fontWeight: 'bold' }}>
+                    {settlementTier === 'pilot' ? '100% REFUNDABLE PILOT TOKEN (ESCROW)' : '50% MILESTONE ADVANCE (PAYPAL)'}
+                  </div>
+                  <div style={{ fontSize: '26px', fontWeight: '900', color: '#fff', marginTop: '2px' }}>
+                    ${paypalAmountUSD} USD
+                  </div>
+                  <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
+                    {settlementTier === 'pilot' ? 'Full unconditional refund within 60 mins if unsatisfied' : `Total Contract Value: ${portalData.invoice?.totalFormatted || '$850 USD'}`}
+                  </div>
+                </div>
+
+                <div style={{ background: 'rgba(0,0,0,0.5)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)', textAlign: 'right' }}>
+                  <div style={{ fontSize: '10px', color: '#94a3b8' }}>INVOICE NUMBER</div>
+                  <strong style={{ fontSize: '12px', color: '#38bdf8' }}>{portalData.invoice?.number || 'INV-2026-VIP'}</strong>
+                  <div style={{ fontSize: '10px', color: '#34d399', marginTop: '2px' }}>Sec 22 CGST Exempt (0% Tax)</div>
+                </div>
+              </div>
+
+              {/* 1-Click PayPal Buttons */}
+              <div className="flex gap-10 mb-14 flex-wrap">
+                <a
+                  href={paypalCheckoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn flex-1"
+                  style={{
+                    background: 'linear-gradient(135deg, #ffc439 0%, #f69c14 100%)',
+                    color: '#000',
+                    fontWeight: '900',
+                    fontSize: '13px',
+                    padding: '12px 18px',
+                    borderRadius: '8px',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxShadow: '0 6px 18px rgba(245, 158, 11, 0.35)'
+                  }}
+                >
+                  <span>💳</span> Pay ${paypalAmountUSD} USD via PayPal / Cards
+                </a>
+
+                <a
+                  href={paypalMeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                  style={{
+                    borderColor: 'rgba(255, 196, 57, 0.4)',
+                    color: '#ffc439',
+                    fontSize: '12px',
+                    padding: '10px 14px'
+                  }}
+                >
+                  ⚡ Direct PayPal.me Link
+                </a>
+              </div>
+
+              {/* PayPal ID & Copy */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.3)', padding: '10px 14px', borderRadius: '8px', flexWrap: 'wrap', gap: '8px' }}>
+                <div style={{ fontSize: '12px', color: '#cbd5e1' }}>
+                  PayPal ID: <code style={{ color: '#ffc439', fontWeight: 'bold' }}>payments@orionflux.agency</code>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText('payments@orionflux.agency');
+                    setCopiedPaypal(true);
+                    setTimeout(() => setCopiedPaypal(false), 2500);
+                  }}
+                  className="btn btn-secondary btn-sm"
+                  style={{ fontSize: '11px', padding: '4px 10px' }}
+                >
+                  {copiedPaypal ? '✓ Copied Email' : '📋 Copy PayPal Email'}
+                </button>
+              </div>
             </div>
+          ) : (
+            /* India UPI View */
+            <div>
+              <div className="flex gap-16 items-center mb-16 flex-wrap">
+                <div style={{ background: '#fff', padding: '8px', borderRadius: '10px', boxShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>
+                  <img src={qrInvoiceUrl} alt="UPI QR" style={{ width: '130px', height: '130px', display: 'block' }} />
+                </div>
 
-            <div style={{ flex: 1, minWidth: '180px' }}>
-              <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>
-                {settlementTier === 'pilot' ? 'ZERO-RISK PILOT INTAKE' : 'OFFICIAL INVOICE NUMBER'}
-              </div>
-              <strong style={{ fontSize: '14px', color: '#38bdf8' }}>{portalData.invoice?.number}</strong>
+                <div style={{ flex: 1, minWidth: '180px' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>
+                    {settlementTier === 'pilot' ? 'ZERO-RISK PILOT INTAKE' : 'OFFICIAL INVOICE NUMBER'}
+                  </div>
+                  <strong style={{ fontSize: '14px', color: '#38bdf8' }}>{portalData.invoice?.number}</strong>
 
-              <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>
-                {settlementTier === 'pilot' ? '48-Hour Refundable Pilot' : '50% Milestone Advance Due'}
+                  <div style={{ marginTop: '8px', fontSize: '11px', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>
+                    {settlementTier === 'pilot' ? '48-Hour Refundable Pilot' : '50% Milestone Advance Due'}
+                  </div>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: settlementTier === 'pilot' ? '#38bdf8' : '#10b981' }}>
+                    {activeAmountFormatted}
+                  </div>
+                  <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
+                    {settlementTier === 'pilot' ? 'Full refund within 60 mins if unsatisfied' : `Total Contract: ${portalData.invoice?.totalFormatted}`}
+                  </div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '2px 8px', borderRadius: '4px', marginTop: '6px', fontSize: '10.5px', color: '#34d399', fontWeight: '600' }}>
+                    <span>✓ Vikas Singh Authorized • Sec 22 CGST Exempt (Zero Tax)</span>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontSize: '24px', fontWeight: 'bold', color: settlementTier === 'pilot' ? '#38bdf8' : '#10b981' }}>
-                {activeAmountFormatted}
-              </div>
-              <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-                {settlementTier === 'pilot' ? 'Full refund within 60 mins if unsatisfied' : `Total Contract: ${portalData.invoice?.totalFormatted}`}
-              </div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '2px 8px', borderRadius: '4px', marginTop: '6px', fontSize: '10.5px', color: '#34d399', fontWeight: '600' }}>
-                <span>✅ Vikas Singh Authorized • Sec 22 CGST Exempt (Zero Tax)</span>
+
+              <div className="flex gap-8 mb-12 flex-wrap">
+                <a
+                  href={effectiveUpiString}
+                  className="btn btn-primary btn-sm flex-1"
+                  style={{
+                    background: settlementTier === 'pilot' ? 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: '#000',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    fontSize: '12px',
+                    padding: '10px'
+                  }}
+                >
+                  📱 Tap to Pay in UPI App (GPay/PhonePe/Paytm)
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText('9690973030@ibl');
+                    setCopiedUpi(true);
+                    setTimeout(() => setCopiedUpi(false), 2500);
+                  }}
+                  className="btn btn-secondary btn-sm"
+                  style={{ fontSize: '11.5px' }}
+                >
+                  {copiedUpi ? '✓ Copied UPI' : '📋 Copy UPI ID'}
+                </button>
               </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex gap-8 flex-wrap">
-            <a
-              href={effectiveUpiString}
-              className="btn btn-primary btn-sm flex-1"
-              style={{
-                background: settlementTier === 'pilot' ? 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                color: '#000',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                textDecoration: 'none',
-                fontSize: '12px',
-                padding: '10px'
-              }}
-            >
-              📱 Tap to Pay in UPI App (GPay/PhonePe/Paytm)
-            </a>
+          {/* Action Row: UTR Verification & Stamped Receipt */}
+          <div className="flex gap-8 flex-wrap mt-12">
             <button
               className="btn btn-secondary btn-sm"
               onClick={() => setShowUtrForm(!showUtrForm)}
               style={{ fontSize: '11.5px', color: paymentConfirmed ? '#10b981' : undefined }}
             >
-              {paymentConfirmed ? '✓ Verified in Bank Ledger' : '📝 Enter Bank UTR / Ref #'}
+              {paymentConfirmed ? '✓ Verified in Bank Ledger' : '📝 Enter Bank UTR / PayPal Transaction ID'}
             </button>
             {(paymentConfirmed || portalData.statutoryReceipt || portalData.invoice?.settledUTR) && (
               <button
@@ -1044,7 +1213,7 @@ export default function ClientPortal() {
                 }}
                 style={{ fontSize: '11.5px', borderColor: '#10b981', color: '#34d399' }}
               >
-                📄 View Stamped Receipt
+                📜 View Stamped Receipt
               </button>
             )}
           </div>
@@ -1057,7 +1226,7 @@ export default function ClientPortal() {
               <div className="flex gap-8">
                 <input
                   type="text"
-                  placeholder="e.g. 430198273612 or PAYPAL-ID"
+                  placeholder="e.g. 430198273612 or PAYPAL-TXN-ID"
                   value={utrInput}
                   onChange={(e) => setUtrInput(e.target.value)}
                   style={{
@@ -1080,7 +1249,7 @@ export default function ClientPortal() {
                 </button>
               </div>
               <div style={{ fontSize: '10.5px', color: 'var(--text-tertiary)', marginTop: '6px' }}>
-                * Directly connects to RBI/UPI settlement ledger and unlocks complete deliverable handover instantly.
+                * Directly connects to bank/escrow settlement ledger and unlocks complete deliverable handover instantly.
               </div>
             </div>
           )}
